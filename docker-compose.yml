@@ -1,0 +1,27 @@
+x-madness: &madness
+  depends_on: [nginx]
+  command: server
+  image: dannyben/madness:edge
+
+services:
+  nginx:
+    image: nginxproxy/nginx-proxy
+    ports: ["${PORT:-80}:80"]
+    volumes:
+    - /var/run/docker.sock:/tmp/docker.sock:ro
+    environment:
+      DEFAULT_HOST: one.localhost
+
+  one:
+    <<: *madness
+    volumes: ['./one:/docs']
+    environment:
+      VIRTUAL_HOST: madness.localhost
+      VIRTUAL_PATH: /one
+
+  two:
+    <<: *madness
+    volumes: ['./two:/docs']
+    environment:
+      VIRTUAL_HOST: madness.localhost
+      VIRTUAL_PATH: /two
