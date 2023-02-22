@@ -10,7 +10,7 @@ services:
     volumes:
     - /var/run/docker.sock:/tmp/docker.sock:ro
     environment:
-      DEFAULT_HOST: one.localhost
+      DEFAULT_HOST: madness.localhost
 
   one:
     <<: *madness
