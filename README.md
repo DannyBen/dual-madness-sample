@@ -8,6 +8,6 @@ to run multiple madness servers under the same domain.
 ## Usage
 
 1. Clone the repository
-2. Run `docker-compose pull`
-3. Run `docker-compose up one two`
+2. Run `docker compose pull`
+3. Run `docker compose up one two`
 4. Go to <http://madness.localhost/one> and <http://madness.localhost/two>
